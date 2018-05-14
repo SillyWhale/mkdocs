@@ -1,6 +1,4 @@
-image: docker:stable
-services:
-- docker:dind
+image: docker:dind
 
 stages:
 - build
@@ -8,8 +6,8 @@ stages:
 
 variables:
   IMAGE_PATH: vfricou/mkdocs
-  CONTAINER_TEST_IMAGE: ${CI_DOCKER_REGISTRY_HOST}/${IMAGE_PATH}:$CI_COMMIT_REF_NAME
-  CONTAINER_RELEASE_IMAGE: ${CI_DOCKER_REGISTRY_HOST}/${IMAGE_PATH}:latest
+  CONTAINER_TEST_IMAGE: docker.fricouv.eu/${IMAGE_PATH}:$CI_COMMIT_REF_NAME
+  CONTAINER_RELEASE_IMAGE: docker.fricouv.eu/${IMAGE_PATH}:latest
 
 before_script:
   - docker login -u ${CI_DOCKER_REGISTRY_USER} -p ${CI_DOCKER_REGISTRY_PASS} ${CI_DOCKER_REGISTRY_HOST}
@@ -18,12 +16,10 @@ build:
   stage: build
   script:
     - docker build -t $CONTAINER_TEST_IMAGE .
-    - docker push $CONTAINER_TEST_IMAGE
 
 release-image:latest:
   stage: release
   script:
-    - docker pull $CONTAINER_TEST_IMAGE
     - docker tag $CONTAINER_TEST_IMAGE $CONTAINER_RELEASE_IMAGE
     - docker push $CONTAINER_RELEASE_IMAGE
   only:
