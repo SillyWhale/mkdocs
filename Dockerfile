@@ -4,7 +4,7 @@ MAINTAINER Vincent FRICOU <vincent@fricouv.eu>
 ENV MKD_ROOT=/mkdocs
 
 RUN \
-  apk update && apk upgrade && apk add python py-pip && pip install mkdocs
+  apk update && apk upgrade && apk add python py-pip && pip install mkdocs && pip install mkdocs-rtd-dropdown
   
 COPY include/init.sh /init.sh
 RUN \
