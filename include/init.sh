@@ -8,4 +8,4 @@ then
     mv project/* .
     rmdir project
 fi
-/usr/bin/mkdocs serve
+/usr/bin/mkdocs serve --dev-addr 0.0.0.0:8000
