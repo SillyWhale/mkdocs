@@ -1,0 +1,10 @@
+version: '3.6'
+
+service:
+  mkdocs:
+    image: SillyWhale/mkdocs:latest
+    ports:
+      - 8000:8000
+    volumes:
+      - ${PWD}/mkdocs-content:/mkdocs
+    restart: on-failure
