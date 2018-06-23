@@ -2,7 +2,7 @@ version: '3.6'
 
 service:
   mkdocs:
-    image: SillyWhale/mkdocs:latest
+    image: sillywhale/mkdocs:latest
     ports:
       - 8000:8000
     volumes:
