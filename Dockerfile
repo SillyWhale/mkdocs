@@ -1,5 +1,5 @@
 FROM alpine:3.7
-LABEL maintainer="Vincent FRICOU <vincent@fricouv.eu>"
+LABEL maintainer="SillyWhale <contact@sillywhale.wtf>"
 
 ENV MKD_ROOT=/mkdocs
 
